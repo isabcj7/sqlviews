@@ -1,0 +1,27 @@
+create database db_biblioteca;
+
+use db_biblioteca;
+
+CREATE TABLE Clientes (
+    ID_Cliente INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Cidade VARCHAR(50),
+    Estado CHAR(2),
+    Email VARCHAR(100),
+    Saldo_Devedor DECIMAL(10, 2)
+);
+
+INSERT INTO Clientes (ID_Cliente, Nome, Cidade, Estado, Email, Saldo_Devedor) VALUES
+(1, 'Ana Silva', 'São Paulo', 'SP', 'ana@email.com', 500),
+(2, 'Bruno Melo', 'Rio de Janeiro', 'RJ', 'bruno@email.com', 0),
+(3, 'Carla Dias', 'Belo Horizonte', 'MG', 'carla@email.com', 200),
+(4, 'Diego Luz', 'São Paulo', 'SP', 'diego@email.com', 150);
+
+select * from Clientes;
+
+CREATE VIEW Clientes_SP_Devedores AS
+SELECT Nome, Cidade, Saldo_Devedor
+FROM Clientes
+WHERE Cidade = 'São Paulo' AND Saldo_Devedor > 0;
+
+select * from Clientes_SP_Devedores;
